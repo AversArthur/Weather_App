@@ -31,7 +31,14 @@ async function checkWeather(city) {
   }
 }
 
-searchButton.addEventListener("click", () => {
+function runMainFunk() {
   checkWeather(searchBox.value || "Berlin");
   document.querySelector(".weather").style.display = "block";
+}
+
+searchButton.addEventListener("click", runMainFunk);
+searchBox.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    runMainFunk();
+  }
 });
